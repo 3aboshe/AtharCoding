@@ -1,0 +1,307 @@
+@import "tailwindcss";
+
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Arabic:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@theme {
+  --color-athar-navy-50: #e8f0f8;
+  --color-athar-navy-100: #c5d9ed;
+  --color-athar-navy-200: #9fc2e2;
+  --color-athar-navy-300: #78abd7;
+  --color-athar-navy-400: #5195cc;
+  --color-athar-navy-500: #2d7ec1;
+  --color-athar-navy-600: #1a5a9f;
+  --color-athar-navy-700: #0f3c7a;
+  --color-athar-navy-800: #0a2a5c;
+  --color-athar-navy-900: #071d40;
+  --color-athar-navy-950: #020d1f;
+
+  --color-athar-accent: #00d4ff;
+  --color-athar-accent-glow: #00f5ff;
+  --color-athar-accent-soft: #4de1ff;
+
+  --font-sans: "Plus Jakarta Sans", "IBM Plex Arabic", sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+
+  --animate-gradient-shift: gradient-shift 8s ease infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-slide-up: slide-up 0.4s ease-out;
+  --animate-slide-down: slide-down 0.3s ease-out;
+  --animate-scale-in: scale-in 0.3s ease-out;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes slide-up {
+  0% { transform: translateY(20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slide-down {
+  0% { transform: translateY(-20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes scale-in {
+  0% { transform: scale(0.9); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Base styles */
+* {
+  border-color: var(--color-athar-navy-700);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: linear-gradient(135deg, #050810 0%, #0a0f1a 50%, #0d1220 100%);
+  min-height: 100vh;
+  color: #e4e4e7;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  margin: 0;
+  display: block;
+  min-width: 320px;
+}
+
+/* Custom scrollbar - darker */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(10, 15, 26, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2d3748;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4a5568;
+}
+
+/* Focus visible styles - subtle */
+:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #3b82f6, 0 0 0 4px #0a0f1a;
+}
+
+/* Selection - subtle blue */
+::selection {
+  background: rgba(59, 130, 246, 0.25);
+  color: #e4e4e7;
+}
+
+/* Premium dark card - less glossy, cleaner */
+.glass-card {
+  background: rgba(10, 15, 30, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.glass-card-interactive {
+  background: rgba(10, 15, 30, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s;
+}
+
+.glass-card-interactive:hover {
+  background: rgba(15, 20, 40, 0.8);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Button styles - premium dark */
+.btn-primary {
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(to right, #1a2845, #253855);
+  color: white;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(to right, #253855, #304865);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.btn-secondary {
+  padding: 0.75rem 1.5rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #d4d4d8;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.btn-accent {
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(to right, #2563eb, #3b82f6);
+  color: white;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-accent:hover {
+  background: linear-gradient(to right, #3b82f6, #60a5fa);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+/* Monaco Editor custom theme override */
+.monaco-editor {
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.monaco-editor .margin {
+  background: rgba(10, 15, 26, 0.5);
+}
+
+/* Background gradient - dark */
+.bg-gradient-deep {
+  background: linear-gradient(135deg, #050810 0%, #0a0f1a 50%, #0d1220 100%);
+}
+
+/* Animated background mesh - subtle */
+.animated-bg {
+  background: linear-gradient(135deg, #050810 0%, #0a0f1a 50%, #0d1220 100%);
+  background-size: 400% 400%;
+  animation: gradient-shift 30s ease infinite;
+}
+
+/* Floating particles - subtle */
+.particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: rgba(100, 116, 139, 0.15);
+  border-radius: 50%;
+  animation: float 10s ease-in-out infinite;
+}
+
+/* Level card animations - premium dark */
+.level-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.level-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+.level-card.completed {
+  border-color: rgba(34, 197, 94, 0.2);
+  background: rgba(34, 197, 94, 0.03);
+}
+
+.level-card.current {
+  border-color: rgba(59, 130, 246, 0.3);
+  background: rgba(59, 130, 246, 0.04);
+  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.1);
+}
+
+.level-card.locked {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Task item animations - premium dark */
+.task-item {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.task-item:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.task-item.completed {
+  border-left: 3px solid #22c55e;
+}
+
+.task-item.current {
+  border-left: 3px solid #3b82f6;
+  background: rgba(59, 130, 246, 0.06);
+}
+
+/* Loading skeleton - dark */
+.skeleton {
+  background: linear-gradient(to right, #151b2b, #1a2235, #151b2b);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s ease-in-out infinite;
+}
+
+@keyframes skeleton-loading {
+  0%, 100% { background-position: 200% 0; }
+  50% { background-position: -200% 0; }
+}
+
+/* Confetti animation for completion */
+@keyframes confetti-fall {
+  0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  animation: confetti-fall 3s ease-out forwards;
+}
+
+/* XP badge - no pulse */
+.xp-badge {
+  animation: scale-in 0.2s ease-out;
+}
+
+/* Toast notification styles - premium dark */
+.toast {
+  animation: slide-down 0.3s ease-out;
+}
+
+.toast-success {
+  background: rgba(34, 197, 94, 0.12);
+  border-color: rgba(34, 197, 94, 0.25);
+  color: #86efac;
+}
+
+.toast-error {
+  background: rgba(239, 68, 68, 0.12);
+  border-color: rgba(239, 68, 68, 0.25);
+  color: #fca5a5;
+}
+
+.toast-info {
+  background: rgba(59, 130, 246, 0.12);
+  border-color: rgba(59, 130, 246, 0.25);
+  color: #93c5fd;
+}
